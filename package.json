@@ -18,5 +18,8 @@
     "json"
   ],
   "author": "Federico Turbino <federicogturbino@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.6.9"
+  }
 }
