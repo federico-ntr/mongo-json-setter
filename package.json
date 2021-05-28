@@ -1,0 +1,22 @@
+{
+  "name": "mongo-json-setter",
+  "version": "1.0.0",
+  "description": "Utility to create a db in Mongo passing a JSON with collections definition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "mongo-set": "./cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/holoitsme/mongo-json-setter.git"
+  },
+  "keywords": [
+    "mongo",
+    "json"
+  ],
+  "author": "Federico Turbino <federicogturbino@gmail.com>",
+  "license": "ISC"
+}
