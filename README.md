@@ -1,4 +1,6 @@
-# mongo-json-setter
+## Not ready for production yet
+### This utility has only basic functionality and is missing checks on passed args
+# Mongo JSON Setter
 A small utility to create a database with collections and documents based on a given JSON file with the wanted configuration.
 
 ```
