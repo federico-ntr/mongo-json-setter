@@ -1,0 +1,33 @@
+{
+  "host": "localhost",
+  "port": "27017",
+  "db_name": "example",
+  "collections": [
+    {
+      "name": "collection1",
+      "fields": {
+        "foo": "bar",
+        "john": "doe"
+      }
+    },
+    {
+      "name": "collection2",
+      "fields": {
+        "title": "Never Gonna Give You Up",
+        "artist": "Rick Astley",
+        "album": "Whenever You Need Somebody",
+        "genre": "Dance pop",
+        "label": "RCA",
+        "formats": [
+          {
+            "type": "Vinyl",
+            "sizes": ["7 inches, 12 inches"]
+          },
+          {
+            "type": "CD"
+          }
+        ]
+      }
+    }
+  ]
+}
