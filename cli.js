@@ -4,14 +4,11 @@ const [,, ...args] = process.argv;
 const fs = require('fs');
 const { MongoClient } = require('mongodb');
 
-console.log(args);
-
 fs.readFile(args[0], 'utf8', (err, data) => {
     if(err) {
         console.error(err);
         return;
     }
-    console.log(data);
     const config = JSON.parse(data);
     const url = `mongodb://${config.host}:${config.port}/${config.db_name}`;
 
