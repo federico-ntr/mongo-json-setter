@@ -2,6 +2,7 @@
 
 const [,, ...args] = process.argv;
 const fs = require('fs');
+const { MongoClient } = require('mongodb');
 
 console.log(args);
 
@@ -11,5 +12,24 @@ fs.readFile(args[0], 'utf8', (err, data) => {
         return;
     }
     console.log(data);
+    const config = JSON.parse(data);
+    const url = `mongodb://${config.host}:${config.port}/${config.db_name}`;
 
+    MongoClient.connect(url, (err, db) => {
+        if (err) throw err;
+        const dbo = db.db(config.db_name);
+        console.log("Database created");
+        for (const [i, collection] of config.collections.entries()) {
+            dbo.createCollection(collection.name, (err, coll) => {
+                if (err) throw err;
+                console.log("Collection created!");
+                coll.insertOne(collection.fields, (err, res) => {
+                    if (err) throw err;
+                    console.log("1 document inserted");
+                    if (i === config.collections.length - 1)
+                        db.close();
+                });
+            });
+        }
+    });
 });
