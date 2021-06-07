@@ -3,6 +3,11 @@
 # Mongo JSON Setter
 A small utility to create a database with collections and documents based on a given JSON file with the wanted configuration.
 
+Install globally with :
+```
+npm install -g mongo-json-setter
+```
+Use it with:
 ```
 mongo-setup ./path/to/your/json
 ```
