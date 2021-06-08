@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const [,, ...args] = process.argv;
+const args = process.argv.slice(2);
 const fs = require('fs');
 const { MongoClient } = require('mongodb');
 
+const json = args[0];
 
-
-fs.readFile(args[0], 'utf8', (err, data) => {
+fs.readFile(json, 'utf8', (err, data) => {
     if(err) {
         console.error(err);
         return;
