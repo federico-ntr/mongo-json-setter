@@ -23,7 +23,7 @@ fs.readFile(args[0], 'utf8', (err, data) => {
 
     const url = `mongodb://${config.host}:${config.port}/${config.db_name}`;
 
-    MongoClient.connect(url, (err, db) => {
+    MongoClient.connect(url, {useUnifiedTopology: true}, (err, db) => {
         if (err) throw err;
         const dbo = db.db(config.db_name);
         console.log("Database created");
