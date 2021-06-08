@@ -11,6 +11,8 @@ Use it with:
 ```
 mongo-setup ./path/to/your/json
 ```
+Pass `--help` or `-h` instead of the json to see the help 
+or `--example` for a demo on your local instance based on the config file below.
 
 Inside your config file you have to specify host and port of your MongoDB instance, along with the database name and the
 collections' array. Refer to the following example:

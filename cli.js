@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
-const args = process.argv.slice(2);
 const fs = require('fs');
+const path = require("path");
 const { MongoClient } = require('mongodb');
+
+const args = process.argv.slice(2);
+const examplePath = path.resolve(__dirname, 'example.json');
 
 switch (args[0]) {
     case '-h':
@@ -10,12 +13,16 @@ switch (args[0]) {
     case undefined:
         console.log('\n\nRefer to https://github.com/holoitsme/mongo-json-setter/blob/main/README.md for instructions on how to use this utility.\n')
         break;
+    case '--example':
+        mongoSetup(examplePath);
+        break;
     default:
         mongoSetup(args[0]);
 }
 
 function mongoSetup(json) {
     fs.readFile(json, 'utf8', (err, data) => {
+        //Handle errors
         if(err) {
             switch (err.code) {
                 case 'ENOENT':
@@ -41,6 +48,7 @@ function mongoSetup(json) {
 
         const url = `mongodb://${config.host}:${config.port}/${config.db_name}`;
 
+        //Connect to DB
         MongoClient.connect(url, {useUnifiedTopology: true}, (err, db) => {
             if (err) throw err;
             const dbo = db.db(config.db_name);
