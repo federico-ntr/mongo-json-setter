@@ -4,12 +4,23 @@ const [,, ...args] = process.argv;
 const fs = require('fs');
 const { MongoClient } = require('mongodb');
 
+
+
 fs.readFile(args[0], 'utf8', (err, data) => {
     if(err) {
         console.error(err);
         return;
     }
-    const config = JSON.parse(data);
+
+    //Parse JSON
+    let config;
+    try {
+        config = JSON.parse(data);
+    } catch (e) {
+        if (e instanceof SyntaxError) console.error('The specified file is not a valid JSON file')
+        return;
+    }
+
     const url = `mongodb://${config.host}:${config.port}/${config.db_name}`;
 
     MongoClient.connect(url, (err, db) => {
