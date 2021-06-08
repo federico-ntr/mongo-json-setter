@@ -17,7 +17,16 @@ switch (args[0]) {
 function mongoSetup(json) {
     fs.readFile(json, 'utf8', (err, data) => {
         if(err) {
-            console.error(err);
+            switch (err.code) {
+                case 'ENOENT':
+                    console.log('\n\nNo such file or directory. Please, select a valid JSON file.\n');
+                    break;
+                case 'EISDIR':
+                    console.log('\n\nThe specified file is a directory. Please, select a valid JSON file\n');
+                    break;
+                default:
+                    console.error(err);
+            }
             return;
         }
 
