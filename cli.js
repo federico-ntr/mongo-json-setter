@@ -57,12 +57,13 @@ function mongoSetup(json) {
                 dbo.createCollection(collection.name, (err, coll) => {
                     if (err) throw err;
                     console.log("Collection created!");
-                    coll.insertOne(collection.fields, (err, res) => {
-                        if (err) throw err;
-                        console.log("1 document inserted");
-                        if (i === config.collections.length - 1)
-                            db.close();
-                    });
+                    for (const [k, document] of collection.documents.entries()) {
+                        coll.insertOne(document, (err, res) => {
+                            if (err) throw err;
+                            if (i === config.collections.length - 1 && k === collection.documents.length - 1)
+                                db.close();
+                        });
+                    }
                 });
             }
         });

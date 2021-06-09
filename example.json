@@ -5,29 +5,48 @@
   "collections": [
     {
       "name": "collection1",
-      "fields": {
-        "foo": "bar",
-        "john": "doe"
-      }
+      "documents": [
+        {
+          "foo": "bar",
+          "john": "doe"
+        }
+      ]
     },
     {
       "name": "collection2",
-      "fields": {
-        "title": "Never Gonna Give You Up",
-        "artist": "Rick Astley",
-        "album": "Whenever You Need Somebody",
-        "genre": "Dance pop",
-        "label": "RCA",
-        "formats": [
-          {
-            "type": "Vinyl",
-            "sizes": ["7 inches, 12 inches"]
-          },
-          {
-            "type": "CD"
-          }
-        ]
-      }
+      "documents": [
+        {
+          "title": "Never Gonna Give You Up",
+          "artist": "Rick Astley",
+          "album": "Whenever You Need Somebody",
+          "genre": "Dance pop",
+          "label": "RCA",
+          "formats": [
+            {
+              "type": "Vinyl",
+              "sizes": ["7 inches, 12 inches"]
+            },
+            {
+              "type": "CD"
+            }
+          ]
+        },
+        {
+          "title": "Changed My Mind",
+          "artist": "Todrick Hall",
+          "album": "Forbidden",
+          "genre": "Pop",
+          "label": "Self-released",
+          "formats": [
+            {
+              "type": "Digital download"
+            },
+            {
+              "type": "Streaming"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
