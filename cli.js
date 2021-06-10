@@ -11,7 +11,7 @@ switch (args[0]) {
     case '-h':
     case '--help':
     case undefined:
-        console.log('\n\nRefer to https://github.com/holoitsme/mongo-json-setter/blob/main/README.md for instructions on how to use this utility.\n')
+        console.log('\n\nRefer to https://github.com/federico-ntr/mongo-json-setter/blob/main/README.md for instructions on how to use this utility.\n')
         break;
     case '--example':
         mongoSetup(examplePath);
