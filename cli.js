@@ -46,14 +46,27 @@ function mongoSetup(json) {
             return;
         }
 
-        const url = `mongodb://${config.host}:${config.port}/${config.db_name}`;
+        const host = config.host;
+        const port = config.port;
+        const db_name = config.db_name;
+        const username = config.username;
+        const password = config.password;
+        const userDb = config.userDb;
+        const collections = config.collections;
+
+        console.log(username + ' ' + password + ' ' + (username !== undefined && password !== undefined));
+
+        const url = (username !== undefined && password !== undefined)
+            ? `mongodb://${username}:${password}@${host}:${port}/${db_name}?authSource=${userDb}`
+            : `mongodb://${host}:${port}/${db_name}`;
+
 
         //Connect to DB
         MongoClient.connect(url, {useUnifiedTopology: true}, (err, db) => {
             if (err) throw err;
-            const dbo = db.db(config.db_name);
+            const dbo = db.db(db_name);
             console.log("Database created");
-            for (const [i, collection] of config.collections.entries()) {
+            for (const [i, collection] of collections.entries()) {
                 dbo.createCollection(collection.name, (err, coll) => {
                     if (err) throw err;
                     console.log("Collection created!");
