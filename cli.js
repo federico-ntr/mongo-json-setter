@@ -71,6 +71,11 @@ function mongoSetup(json) {
                     if (err) throw err;
                     console.log("Collection created!");
                     for (const [k, document] of collection.documents.entries()) {
+                        for (const key in document) {
+                            if (Object.prototype.hasOwnProperty.call(document[key], '$date')) {
+                                document[key] = new Date(Date.parse(document[key].$date));
+                            }
+                        }
                         coll.insertOne(document, (err, res) => {
                             if (err) throw err;
                             if (i === config.collections.length - 1 && k === collection.documents.length - 1)
