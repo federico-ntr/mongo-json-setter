@@ -68,7 +68,14 @@ function mongoSetup(json) {
             console.log("Database created");
             for (const [i, collection] of collections.entries()) {
                 dbo.createCollection(collection.name, (err, coll) => {
-                    if (err) throw err;
+                    switch (err.code) {
+                        case 13:
+                            console.log('You need to be authenticated to create collections in this database.');
+                            break;
+                        default:
+                            console.log(err.code);
+                            throw err;
+                    }
                     console.log("Collection created!");
                     for (const [k, document] of collection.documents.entries()) {
                         for (const key in document) {
