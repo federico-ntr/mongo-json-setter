@@ -54,7 +54,7 @@ function mongoSetup(json) {
         const userDb = config.userDb;
         const collections = config.collections;
 
-        console.log(username + ' ' + password + ' ' + (username !== undefined && password !== undefined));
+        //console.log(username + ' ' + password + ' ' + (username !== undefined && password !== undefined));
 
         const url = (username !== undefined && password !== undefined)
             ? `mongodb://${username}:${password}@${host}:${port}/${db_name}?authSource=${userDb}`
