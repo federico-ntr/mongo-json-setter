@@ -1,6 +1,6 @@
 {
   "name": "mongo-json-setter",
-  "version": "0.9.7",
+  "version": "0.9.8",
   "description": "Utility to create a db in Mongo passing a JSON with collections definition",
   "main": "index.js",
   "scripts": {
